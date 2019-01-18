@@ -1,0 +1,37 @@
+    version: '2'
+	services:
+	  registry:
+	    scale: 1
+	    start_on_create: true
+	  lb:
+	    start_on_create: true
+	    lb_config:
+	      certs: []
+	      default_cert: wildcard.sdc.t-systems.com
+	      port_rules:
+	      - priority: 5
+	        protocol: https
+	        service: portusMain
+	        source_port: 50010
+	        target_port: 3000
+	      - priority: 8
+	        protocol: https
+	        service: registry
+	        source_port: 443
+	        target_port: 5000
+	    health_check:
+	      healthy_threshold: 2
+	      response_timeout: 2000
+	      port: 42
+	      unhealthy_threshold: 3
+	      interval: 2000
+	      strategy: recreate
+	  db:
+	    scale: 1
+	    start_on_create: true
+	  portusMain:
+	    scale: 1
+	    start_on_create: true
+	  PortusBackground:
+	    scale: 1
+	    start_on_create: true
