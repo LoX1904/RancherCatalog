@@ -1,0 +1,7 @@
+name: Private Registry
+description: |
+   private registry with Portus as UI
+version: 1
+category: registry
+maintainer: Leon Rudolph
+license: # GNU
