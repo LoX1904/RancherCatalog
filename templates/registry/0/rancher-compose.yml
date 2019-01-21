@@ -3,7 +3,7 @@ catalog:
   name: "Registry"
   version: "0.50.2"
   description: "Registry wiht powerfull UI"
-    questions:
+  questions:
     - variable: "DBPASSWORD"
       label: "DB Password"
       description: "Password for Portus database access, must be 8 characters or longer"
