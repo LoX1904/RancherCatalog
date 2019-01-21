@@ -76,7 +76,7 @@ services:
     stdin_open: true
     volumes:
     - ${DIR}:/certs
-    - ${VNAME}:/srv/Portus
+    - ${PORTUSVOL}:/srv/Portus
     tty: true
     links:
     - db:db
@@ -111,7 +111,7 @@ services:
       PORTUS_DB_DATABASE: portus
     stdin_open: true
     volumes:
-    - ${DIR}:/srv/Portus
+    - ${PORTUSVOL}:/srv/Portus
     - /etc/test/certs:/certs
     tty: true
     links:
