@@ -18,8 +18,8 @@ services:
       REGISTRY_AUTH_TOKEN_ROOTCERTBUNDLE: /certs/registry.crt
     stdin_open: true
     volumes:
-    - ${DIR}:/certs
-    - ${DIR}:/var/lib/registry
+    - /etc/certs:/certs
+    - /${DIR}/certs:/var/lib/registry
     tty: true
     links:
     - portusMain:portus
@@ -75,8 +75,8 @@ services:
       PORTUS_DB_DATABASE: portus
     stdin_open: true
     volumes:
-    - ${DIR}:/certs
-    - ${DIR}:/srv/Portus
+    - /etc/certs:/certs
+    - /${DIR}/portus:/srv/Portus
     tty: true
     links:
     - db:db
@@ -111,8 +111,8 @@ services:
       PORTUS_DB_DATABASE: portus
     stdin_open: true
     volumes:
-    - ${DIR}:/srv/Portus
-    - ${DIR}:/certs
+    - /${DIR}/portus:/srv/Portus
+    - /etc/certs:/certs
     tty: true
     links:
     - db:db
