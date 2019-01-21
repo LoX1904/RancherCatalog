@@ -3,18 +3,27 @@ services:
   sonarqube:
     image: sonarqube:7.1
     environment:
-      SONARQUBE_JDBC_PASSWORD: sonar
+      SONARQUBE_JDBC_PASSWORD: ${DBPASSWORD}
       SONARQUBE_JDBC_URL: jdbc:mysql://db:3306/sonar?useUnicode=true&characterEncoding=utf8&rewriteBatchedStatements=true&useSSL=false
-      SONARQUBE_JDBC_USERNAME: sonar
+      SONARQUBE_JDBC_USERNAME: ${SONARUSER}
     stdin_open: true
     tty: true
     links:
     - db:db
+  lb:
+    image: rancher/lb-service-haproxy:v0.9.6
+    ports:
+    - 50050:50050/tcp
+    - 50051:50051/tcp
+    labels:
+      io.rancher.container.agent.role: environmentAdmin,agent
+      io.rancher.container.agent_service.drain_provider: 'true'
+      io.rancher.container.create_agent: 'true'
   jenkins:
     image: lox1904/test_jenkins:1
     environment:
-      JENKINS_USER: test
-      JENKINS_PASS: test
+      JENKINS_PASS: ${JPASSWORD}
+      JENKINS_USER: ${JUSER}
     stdin_open: true
     tty: true
     labels:
@@ -23,9 +32,8 @@ services:
     image: mysql:5.7
     environment:
       MYSQL_DATABASE: sonar
-      MYSQL_PASSWORD: sonar
-      MYSQL_ROOT_HOST: 172.17.0.1
-      MYSQL_ROOT_PASSWORD: sonar
-      MYSQL_USER: sonar
+      MYSQL_PASSWORD: ${DBPASSWORD}
+      MYSQL_ROOT_PASSWORD: ${ROOTPASSWORD}
+      MYSQL_USER: ${DBUSER}
     stdin_open: true
     tty: true
