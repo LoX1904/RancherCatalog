@@ -2,20 +2,8 @@ version: '2'
 catalog:
   name: "Registry"
   version: "0.50.2"
-  description: "Complete Home Automation System"
+  description: "Registry wiht powerfull UI"
     questions:
-    - variable: "RPORT"
-      label: "Registry Port"
-      description: "Port on which to run the registry service"
-      default: 5000
-      required: true
-      type: "int"
-    - variable: "PORT"
-      label: "Admin Port"
-      description: "Port on which to run the SSL Portus administration service and API"
-      default: 443
-      required: true
-      type: "int"
     - variable: "DBPASSWORD"
       label: "DB Password"
       description: "Password for Portus database access, must be 8 characters or longer"
