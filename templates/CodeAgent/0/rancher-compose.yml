@@ -1,0 +1,73 @@
+version: '2'
+catalog:
+  name: "Jenkins+SonarQube"
+  version: "1.0.0"
+  description: "Jenkins with SonarQube Scanner"
+  questions:
+    - variable: "JPASSWORD"
+      label: "Jenkins Password"
+      description: "Password for Jenkins initial User"
+      required: true
+      default: password
+      type: "password"
+    - variable: "DBPASSWORD"
+      label: "DB Password"
+      description: "Password for SonarQube database access, must be 8 characters or longer"
+      required: true
+      default: password
+      type: "password"
+    - variable: "ROOTPASSWORD"
+      label: "DB Rootpassword"
+      description: "Password for root access to database, must be 8 characters or longer"
+      required: true
+      default: password
+      type: "password"
+    - variable: "JUSER"
+      label: "Jenkins User"
+      description: "Username for initial Jenkinsuer"
+      required: true
+      default: admin
+      type: "string"
+    - variable: "DBUSER"
+      label: "DB User"
+      description: "Username for SonarQube database access"
+      required: true
+      default: sonar
+      type: "string"
+services:
+  sonarqube:
+    scale: 1
+    start_on_create: true
+  lb:
+    scale: 1
+    start_on_create: true
+    lb_config:
+      certs: []
+      default_cert: wildcard.sdc.t-systems.com
+      port_rules:
+      - hostname: ''
+        path: ''
+        priority: 1
+        protocol: https
+        service: sonarqube
+        source_port: 50050
+        target_port: 9000
+      - priority: 2
+        protocol: https
+        service: jenkins
+        source_port: 50051
+        target_port: 8080
+    health_check:
+      healthy_threshold: 2
+      response_timeout: 2000
+      port: 42
+      unhealthy_threshold: 3
+      initializing_timeout: 60000
+      interval: 2000
+      reinitializing_timeout: 60000
+  jenkins:
+    scale: 1
+    start_on_create: true
+  db:
+    scale: 1
+    start_on_create: true
