@@ -5,7 +5,7 @@ services:
     environment:
       SONARQUBE_JDBC_PASSWORD: ${DBPASSWORD}
       SONARQUBE_JDBC_URL: jdbc:mysql://db:3306/sonar?useUnicode=true&characterEncoding=utf8&rewriteBatchedStatements=true&useSSL=false
-      SONARQUBE_JDBC_USERNAME: ${SONARUSER}
+      SONARQUBE_JDBC_USERNAME: ${DBUSER}
     stdin_open: true
     tty: true
     links:
