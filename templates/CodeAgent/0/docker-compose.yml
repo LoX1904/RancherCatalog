@@ -1,0 +1,31 @@
+version: '2'
+services:
+  sonarqube:
+    image: sonarqube:7.1
+    environment:
+      SONARQUBE_JDBC_PASSWORD: sonar
+      SONARQUBE_JDBC_URL: jdbc:mysql://db:3306/sonar?useUnicode=true&characterEncoding=utf8&rewriteBatchedStatements=true&useSSL=false
+      SONARQUBE_JDBC_USERNAME: sonar
+    stdin_open: true
+    tty: true
+    links:
+    - db:db
+  jenkins:
+    image: lox1904/test_jenkins:1
+    environment:
+      JENKINS_USER: test
+      JENKINS_PASS: test
+    stdin_open: true
+    tty: true
+    labels:
+      io.rancher.container.pull_image: always
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_DATABASE: sonar
+      MYSQL_PASSWORD: sonar
+      MYSQL_ROOT_HOST: 172.17.0.1
+      MYSQL_ROOT_PASSWORD: sonar
+      MYSQL_USER: sonar
+    stdin_open: true
+    tty: true
