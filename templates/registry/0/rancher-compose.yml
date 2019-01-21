@@ -3,6 +3,41 @@ catalog:
   name: "Registry"
   version: "0.50.2"
   description: "Complete Home Automation System"
+    questions:
+    - variable: "RPORT"
+      label: "Registry Port"
+      description: "Port on which to run the registry service"
+      default: 5000
+      required: true
+      type: "int"
+    - variable: "PORT"
+      label: "Admin Port"
+      description: "Port on which to run the SSL Portus administration service and API"
+      default: 443
+      required: true
+      type: "int"
+    - variable: "DBPASSWORD"
+      label: "DB Password"
+      description: "Password for Portus database access, must be 8 characters or longer"
+      required: true
+      default: password
+      type: "password"
+    - variable: "ROOTPASSWORD"
+      label: "DB Root Password"
+      description: "Root Password for MariDB database, must be 8 characters or longer.  This is not normally used."
+      required: true
+      default: password
+      type: "password"
+    - variable: "DIR"
+      label: "Storage directory"
+      description: "Path of shared storage to use for registry, database, and certificates.  This should be available on all hosts"
+      required: true
+      type: "string"
+    - variable: "DOMAIN"
+      label: "Domain"
+      description: "Domain of server.  This should be the CN in the certificates and will be the URL to contact the Registry and Web interface"
+      required: true
+      type: "string"
 services:
   registry:
     scale: 1
