@@ -19,7 +19,7 @@ services:
     stdin_open: true
     volumes:
     - /etc/certs:/certs
-    - /${DIR}/RegistryData:/var/lib/registry
+    - ${DIR}:/var/lib/registry
     tty: true
     links:
     - portusMain:portus
@@ -54,7 +54,7 @@ services:
     labels:
       registry.portus.db: '1'
     volumes:
-    - /${DIR}/mysql/:/var/lib/mysql
+    - ${DIR}:/var/lib/mysql
   portusMain:
     image: opensuse/portus:head
     environment:
@@ -75,7 +75,7 @@ services:
       PORTUS_DB_DATABASE: portus
     stdin_open: true
     volumes:
-    - /etc/certs:/certs
+    - /etc/test/certs:/certs
     - ${DIR}:/srv/Portus
     tty: true
     links:
@@ -112,7 +112,7 @@ services:
     stdin_open: true
     volumes:
     - ${DIR}:/srv/Portus
-    - /etc/certs:/certs
+    - /etc/test/certs:/certs
     tty: true
     links:
     - db:db
