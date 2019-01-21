@@ -34,6 +34,12 @@ catalog:
       required: true
       default: sonar
       type: "string"
+    - variable: "SONARUSER"
+      label: "SonarQube User"
+      description: "Username for SonarQube admin user"
+      required: true
+      default: admin
+      type: "string"
 services:
   sonarqube:
     scale: 1
