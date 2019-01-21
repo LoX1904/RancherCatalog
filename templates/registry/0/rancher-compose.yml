@@ -22,8 +22,13 @@ catalog:
       required: true
       type: "string"
     - variable: "VNAME"
-      label: "Name of the Storage"
-      description: "Name for shared storage to use for registry, database, and certificates.  This should be available on all hosts"
+      label: "Name of the Registrystorage"
+      description: "Name for shared storage to use for registry, database"
+      required: true
+      type: "string"
+    - variable: "PORTUSVOL"
+      label: "Name of the Portusstorage"
+      description: "Name for shared storage to use for portus"
       required: true
       type: "string"
     - variable: "DOMAIN"
