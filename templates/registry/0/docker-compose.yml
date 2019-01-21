@@ -19,7 +19,7 @@ services:
     stdin_open: true
     volumes:
     - /etc/certs:/certs
-    - /${DIR}/certs:/var/lib/registry
+    - /${DIR}/RegistryData:/var/lib/registry
     tty: true
     links:
     - portusMain:portus
