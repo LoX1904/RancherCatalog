@@ -18,8 +18,8 @@ services:
       REGISTRY_AUTH_TOKEN_ROOTCERTBUNDLE: /certs/registry.crt
     stdin_open: true
     volumes:
-    - /etc/certs:/certs
-    - ${DIR}:/var/lib/registry
+    - ${DIR}:/certs
+    - ${VNAME}:/var/lib/registry
     tty: true
     links:
     - portusMain:portus
@@ -54,7 +54,7 @@ services:
     labels:
       registry.portus.db: '1'
     volumes:
-    - ${DIR}:/var/lib/mysql
+    - ${VNAME}:/var/lib/mysql
   portusMain:
     image: opensuse/portus:head
     environment:
@@ -75,8 +75,8 @@ services:
       PORTUS_DB_DATABASE: portus
     stdin_open: true
     volumes:
-    - /etc/test/certs:/certs
-    - ${DIR}:/srv/Portus
+    - ${DIR}:/certs
+    - ${VNAME}:/srv/Portus
     tty: true
     links:
     - db:db
