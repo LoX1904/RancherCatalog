@@ -1,1 +1,7 @@
-a
+name: Jenkins + SonarQube
+description: |
+   Jenkins + SonarQube
+version: 0
+category: test
+maintainer: Leon Rudolph
+license: # GNU
