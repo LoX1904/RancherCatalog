@@ -19,7 +19,7 @@ services:
     stdin_open: true
     volumes:
     - ${DIR}/certs:/certs
-    - ${DIR}/RegistryData:/var/lib/registry
+    - ${DIR}:/var/lib/registry
     tty: true
     links:
     - portusMain:portus
@@ -53,8 +53,6 @@ services:
     - --innodb-flush-log-at-trx-commit=0
     labels:
       registry.portus.db: '1'
-    volumes:
-    -  ${DIR}/mysql:/var/lib/mysql
   portusMain:
     image: opensuse/portus:head
     environment:
