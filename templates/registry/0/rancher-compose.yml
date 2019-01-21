@@ -17,8 +17,13 @@ catalog:
       default: password
       type: "password"
     - variable: "DIR"
-      label: "Storage directory"
-      description: "Path of shared storage to use for registry, database, and certificates.  This should be available on all hosts"
+      label: "Certificate directory"
+      description: "Path to certificates."
+      required: true
+      type: "string"
+    - variable: "VNAME"
+      label: "Name of the Storage"
+      description: "Name for shared storage to use for registry, database, and certificates.  This should be available on all hosts"
       required: true
       type: "string"
     - variable: "DOMAIN"
