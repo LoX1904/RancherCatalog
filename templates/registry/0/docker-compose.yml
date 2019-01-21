@@ -29,7 +29,7 @@ services:
     stdin_open: true
     tty: true
     ports:
-    - 50011:50011/tcp
+    - 50010:50010/tcp
     - 443:443/tcp
     labels:
       io.rancher.container.agent.role: environmentAdmin,agent
