@@ -1,7 +1,7 @@
 version: '2'
 catalog:
   name: "Registry"
-  version: "0.50.2"
+  version: "1.0"
   description: "Registry wiht powerfull UI"
   questions:
     - variable: "DBPASSWORD"
