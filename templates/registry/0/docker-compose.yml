@@ -1,7 +1,7 @@
 version: '2'
 services:
   registry:
-    image: registry:2.6.2
+    image: registry:2.7.1
     environment:
       REGISTRY_LOG_LEVEL: warn
       REGISTRY_NOTIFICATIONS_ENDPOINTS: |-
