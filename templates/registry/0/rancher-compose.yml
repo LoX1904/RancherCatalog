@@ -55,7 +55,7 @@ services:
       - priority: 2
         protocol: https
         service: portusMain
-        source_port: 50010
+        source_port: ${PPORT}
         target_port: 3000
       - priority: 3
         protocol: https
