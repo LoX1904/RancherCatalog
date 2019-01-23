@@ -12,7 +12,7 @@ services:
           backoff: 1s
       REGISTRY_STORAGE_DELETE_ENABLED: 'true'
       REGISTRY_AUTH: token
-      REGISTRY_AUTH_TOKEN_REALM: https://${DOMAIN}:50010/v2/token
+      REGISTRY_AUTH_TOKEN_REALM: https://${DOMAIN}:${PPORT}/v2/token
       REGISTRY_AUTH_TOKEN_SERVICE: ${DOMAIN}
       REGISTRY_AUTH_TOKEN_ISSUER: ${DOMAIN}
       REGISTRY_AUTH_TOKEN_ROOTCERTBUNDLE: /certs/registry.crt
