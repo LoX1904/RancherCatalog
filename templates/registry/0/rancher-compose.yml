@@ -36,6 +36,12 @@ catalog:
       description: "Domain of server.  This should be the CN in the certificates and will be the URL to contact the Registry and Web interface"
       required: true
       type: "string"
+    - variable: "PPORT"
+      label: "Portus port"
+      description: "Port on which Portus is accessible from outside"
+      required: true
+      default: 5000
+      type: "int"
 services:
   registry:
     scale: 1
