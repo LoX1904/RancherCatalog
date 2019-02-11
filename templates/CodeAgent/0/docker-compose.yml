@@ -20,7 +20,7 @@ services:
       io.rancher.container.agent_service.drain_provider: 'true'
       io.rancher.container.create_agent: 'true'
   jenkins:
-    image: lox1904/test_jenkins:1
+    image: lox1904/test_jenkins:1.1
     environment:
       JENKINS_PASS: ${JPASSWORD}
       JENKINS_USER: ${JUSER}
